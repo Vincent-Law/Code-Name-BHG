@@ -7,6 +7,9 @@ public class CharacterMovement : MonoBehaviour
     public Animator animator;
     public float speed;
 
+    Vector3 movement;
+    public Rigidbody2D rb;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -16,12 +19,23 @@ public class CharacterMovement : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        Vector3 movement = new Vector3(Input.GetAxis("Horizontal"), Input.GetAxis("Vertical"), 0.0f);
+        ProcessInputs();
+        Animate();
+        Move();
 
+        
+    }
+    private void ProcessInputs()
+    {
+        movement = new Vector3(Input.GetAxis("Horizontal"), Input.GetAxis("Vertical"), 0.0f);
+    }
+    private void Animate()
+    {
         animator.SetFloat("Horizontal", movement.x);
         animator.SetFloat("Vertical", movement.y);
         animator.SetFloat("Magnitude", movement.magnitude);
-
-        transform.position = transform.position + movement * Time.deltaTime * speed;
     }
-}
+    private void Move() {
+        rb.velocity = new Vector2(movement.x, movement.y)*speed;
+    }
+ }
