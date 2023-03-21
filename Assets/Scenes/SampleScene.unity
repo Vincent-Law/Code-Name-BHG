@@ -4856,7 +4856,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 918c511cf49c06a4187409efc7712927, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  player: {fileID: 2108442605}
+  player: {fileID: 1682321747}
 --- !u!1 &536727950
 GameObject:
   m_ObjectHideFlags: 0
@@ -9768,11 +9768,6 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 1921365520243589442, guid: a694a12a129f9b74cbe4400752fff188,
-        type: 3}
-      propertyPath: m_SpriteSortPoint
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 3242880182683626601, guid: a694a12a129f9b74cbe4400752fff188,
         type: 3}
       propertyPath: m_RootOrder
@@ -9781,12 +9776,12 @@ PrefabInstance:
     - target: {fileID: 3242880182683626601, guid: a694a12a129f9b74cbe4400752fff188,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 21.273
+      value: 21.86
       objectReference: {fileID: 0}
     - target: {fileID: 3242880182683626601, guid: a694a12a129f9b74cbe4400752fff188,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: -7.326
+      value: -8.5
       objectReference: {fileID: 0}
     - target: {fileID: 3242880182683626601, guid: a694a12a129f9b74cbe4400752fff188,
         type: 3}
@@ -9832,6 +9827,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: MainCharacter
+      objectReference: {fileID: 0}
+    - target: {fileID: 9214305149503371070, guid: a694a12a129f9b74cbe4400752fff188,
+        type: 3}
+      propertyPath: m_Size.x
+      value: 0.1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -62960,6 +62960,12 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 1592924945}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &1682321747 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 5081685744827532385, guid: a694a12a129f9b74cbe4400752fff188,
+    type: 3}
+  m_PrefabInstance: {fileID: 1389510166}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1684888415
 GameObject:
   m_ObjectHideFlags: 0
@@ -64844,12 +64850,6 @@ Grid:
   m_CellGap: {x: 0, y: 0, z: 0}
   m_CellLayout: 0
   m_CellSwizzle: 0
---- !u!1 &2108442605 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 5081685744827532385, guid: a694a12a129f9b74cbe4400752fff188,
-    type: 3}
-  m_PrefabInstance: {fileID: 1389510166}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &2124213532
 PrefabInstance:
   m_ObjectHideFlags: 0
