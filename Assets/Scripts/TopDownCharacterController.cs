@@ -6,45 +6,65 @@ namespace Cainos.PixelArtTopDown_Basic
 {
     public class TopDownCharacterController : MonoBehaviour
     {
-        public float speed;
-
+        public const float speed = 10f;
+        private new Rigidbody2D rigidbody2D;
+        private Vector2 moveDir;
+        private Vector2 lastMoveDir;
         private Animator animator;
 
         private void Start()
         {
+            rigidbody2D = GetComponent<Rigidbody2D>();
             animator = GetComponent<Animator>();
         }
 
 
         private void Update()
         {
-            Vector2 dir = Vector2.zero;
-            if (Input.GetKey(KeyCode.A))
-            {
-                dir.x = -1;
-                animator.SetInteger("Direction", 3);
-            }
-            else if (Input.GetKey(KeyCode.D))
-            {
-                dir.x = 1;
-                animator.SetInteger("Direction", 2);
-            }
+          HandleMovement();
+        }
 
+        private void HandleMovement()
+        {
+            float moveX = 0f;
+            float moveY = 0f;
+
+            //keyboard inputs
             if (Input.GetKey(KeyCode.W))
             {
-                dir.y = 1;
-                animator.SetInteger("Direction", 1);
+                moveY = +1f;
             }
-            else if (Input.GetKey(KeyCode.S))
+            if (Input.GetKey(KeyCode.S))
             {
-                dir.y = -1;
-                animator.SetInteger("Direction", 0);
+                moveY = -1f;
+            }
+            if (Input.GetKey(KeyCode.A))
+            {
+                moveX = -1f;
+            }
+            if (Input.GetKey(KeyCode.D))
+            {
+                moveX = +1f;
             }
 
-            dir.Normalize();
-            animator.SetBool("IsMoving", dir.magnitude > 0);
+            //calculating move direction vector
+            Vector2 moveDir = new Vector2(moveX, moveY).normalized;
 
-            GetComponent<Rigidbody2D>().velocity = speed * dir;
+            //test if idle or moving
+            bool isIdle = moveX == 0 && moveY == 0;
+            if (isIdle) {
+                //Idle
+                rigidbody2D.velocity = Vector2.zero;
+                animator.SetBool("isMoving", false);
+            }
+            else {
+                //Moving
+                lastMoveDir = moveDir;
+                rigidbody2D.velocity = moveDir * speed;
+                animator.SetFloat("Horizontal", moveDir.x);
+                animator.SetFloat("Vertical", moveDir.y);
+                animator.SetBool("isMoving", true);
+            }
         }
     }
 }
