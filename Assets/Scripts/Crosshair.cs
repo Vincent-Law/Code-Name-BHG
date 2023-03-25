@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class Crosshair : MonoBehaviour
 {
+    Vector3 position;
     // Start is called before the first frame update
     void Start()
     {
@@ -13,7 +14,7 @@ public class Crosshair : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        Vector3 position = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+        position = Camera.main.ScreenToWorldPoint(Input.mousePosition);
         position.z = 1.0f;
         transform.position = position;
     }
