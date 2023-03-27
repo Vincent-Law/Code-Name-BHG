@@ -24,8 +24,11 @@ public class PlayerController : MonoBehaviour {
     public GameObject crossHair;
     public GameObject arrowPrefab;
     public bool useController;
-    Vector3 mousePosition;
-    Vector3 mousePositionWorld;
+    Vector2 mousePosition;
+    Vector3 screenPoint;
+    Vector2 offset;
+
+    public Camera cam;
 
 
 
@@ -48,8 +51,22 @@ public class PlayerController : MonoBehaviour {
             endOfAiming = Input.GetButtonUp("Fire");
         }       
         else {
-            mouseMovement = new Vector3(Input.GetAxis("Mouse X"), Input.GetAxis("Mouse Y"), 0.0f);
-            aim = aim + mouseMovement;
+            //mouseMovement = new Vector3(Input.GetAxis("Mouse X"), Input.GetAxis("Mouse Y"), 0.0f);
+            //aim = aim + mouseMovement;
+          // if (aim.magnitude> 10.0f)
+         //  {
+               //aim.Normalize();
+         //  }
+            //crossHair.transform.position = aim;
+           // aim = crossHair.transform.position;
+           
+            mousePosition = Input.mousePosition;
+            screenPoint = Camera.main.WorldToScreenPoint(transform.localPosition);
+            offset = new Vector2(mousePosition.x - screenPoint.x, mousePosition.y - screenPoint.y);
+            
+            crossHair.transform.position = Vector3.Lerp(crossHair.transform.position, screenPoint, 1  * Time.deltaTime);
+            aim = offset;
+            
             isAiming = Input.GetButton("Fire");
             endOfAiming = Input.GetButton("Fire1");
         } 
@@ -58,8 +75,8 @@ public class PlayerController : MonoBehaviour {
         if(Input.GetButtonDown("Fire")) {
                 //add rigibody2D component to arrow prefab
                 GameObject arrow = Instantiate(arrowPrefab, transform.position, Quaternion.identity);
-                //set gravity scale to 0
-                arrow.GetComponent<Rigidbody2D>().velocity = shootingDirection * 3.0f;
+            //set gravity scale to 0
+            arrow.GetComponent<Rigidbody2D>().velocity = shootingDirection * .05f;
                 //provides shooting angle based on crosshair placement
                 arrow.transform.Rotate(0.0f, 0.0f, Mathf.Atan2(shootingDirection.y, shootingDirection.x) * Mathf.Rad2Deg);
                 //destroys arrow after set time

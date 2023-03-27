@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 1788531289095707783}
   - component: {fileID: -7955415249480155674}
   m_Layer: 0
-  m_Name: Arrow
+  m_Name: Arrow 1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -74,7 +74,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: 301b9ba37aeee79478702764e86e42a9, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 487b14495c27b0542b4e74ce2e2fe344, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
