@@ -9773,6 +9773,12 @@ PrefabInstance:
       propertyPath: crossHair
       value: 
       objectReference: {fileID: 2117938593}
+    - target: {fileID: -4095877889592860869, guid: a694a12a129f9b74cbe4400752fff188,
+        type: 3}
+      propertyPath: arrowPrefab
+      value: 
+      objectReference: {fileID: 1608702820766567197, guid: 6ebd73f1b83cf2a4e9848baa9d7fe4ec,
+        type: 3}
     - target: {fileID: 3242880182683626601, guid: a694a12a129f9b74cbe4400752fff188,
         type: 3}
       propertyPath: m_RootOrder
@@ -64933,9 +64939,9 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingLayerID: -105541197
+  m_SortingLayer: 3
+  m_SortingOrder: 3
   m_Sprite: {fileID: 21300000, guid: d7dcd275f87550f4ebdd5212299d12ef, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
