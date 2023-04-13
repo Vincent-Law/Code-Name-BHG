@@ -72,7 +72,7 @@ public class PlayerController : MonoBehaviour {
         } 
         
         Vector2 shootingDirection = new Vector2(aim.x, aim.y);
-        if(Input.GetButtonDown("Fire")) {
+        if(Input.GetButtonUp("Fire")) {
                 //add rigibody2D component to arrow prefab
                 GameObject arrow = Instantiate(arrowPrefab, transform.position, Quaternion.identity);
             //set gravity scale to 0
@@ -90,7 +90,16 @@ public class PlayerController : MonoBehaviour {
         movement = new Vector2(Input.GetAxis("MoveHorizontal"), Input.GetAxis("MoveVertical"));
         movementSpeed = Mathf.Clamp(movement.magnitude, 0.0f, 1.0f);
         movement.Normalize();
-        rb.velocity = movement * movementSpeed * MOVEMENT_BASE_SPEED;
+        
+        if (Input.GetButtonDown("Fire"))
+        {
+          rb.velocity = movement * movementSpeed * MOVEMENT_BASE_SPEED;
+        }
+        else
+        {
+         rb.velocity = movement * movementSpeed * MOVEMENT_BASE_SPEED;
+        }
+        
     }
 
     void Animate() {

@@ -109,9 +109,10 @@ MonoBehaviour:
   animator: {fileID: 3902226235567580098}
   crossHair: {fileID: 4383577063804080846, guid: 4aa8dea031034874ba18dce803b14462,
     type: 3}
-  arrowPrefab: {fileID: 1608702820766567197, guid: fe0406c25f990204dbff9d4bdf16d07e,
+  arrowPrefab: {fileID: 1608702820766567197, guid: 6ebd73f1b83cf2a4e9848baa9d7fe4ec,
     type: 3}
   useController: 0
+  cam: {fileID: 0}
 --- !u!95 &3902226235567580098
 Animator:
   serializedVersion: 5

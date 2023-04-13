@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3513292928090644674}
   - component: {fileID: 1504060529759150034}
+  - component: {fileID: 7173180438611787720}
   m_Layer: 0
   m_Name: Crosshair
   m_TagString: Untagged
@@ -25,7 +26,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4383577063804080846}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: -0.015, z: 0}
+  m_LocalPosition: {x: 830.999, y: 317.9995, z: 9.999996}
   m_LocalScale: {x: 0.26818237, y: 0.26818237, z: 2.6818237}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -84,3 +85,15 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &7173180438611787720
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4383577063804080846}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c0beb15c0d9314e4abe6280b097d37e9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
