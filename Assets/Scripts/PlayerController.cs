@@ -13,6 +13,7 @@ public class PlayerController : MonoBehaviour {
     public Vector2 movement;
     public Vector3 mouseMovement;
     public Vector3 aim;
+    public Vector3 bowPos;
     bool isAiming;
     bool endOfAiming;
 
@@ -23,6 +24,8 @@ public class PlayerController : MonoBehaviour {
 
     public GameObject crossHair;
     public GameObject arrowPrefab;
+    public GameObject bow;
+
     public bool useController;
     Vector2 mousePosition;
     Vector3 screenPoint;
@@ -44,21 +47,14 @@ public class PlayerController : MonoBehaviour {
     }
     void ProcessInputs(){
 
-        if (useController) {
-            aim = new Vector3(Input.GetAxis("AimHorizontal"), Input.GetAxis("AimVertical"), 0.0f);
-            aim.Normalize();
-            isAiming = Input.GetButton("Fire");
-            endOfAiming = Input.GetButtonUp("Fire");
-        }       
-        else {
-            //mouseMovement = new Vector3(Input.GetAxis("Mouse X"), Input.GetAxis("Mouse Y"), 0.0f);
-            //aim = aim + mouseMovement;
-          // if (aim.magnitude> 10.0f)
-         //  {
-               //aim.Normalize();
-         //  }
-            //crossHair.transform.position = aim;
-           // aim = crossHair.transform.position;
+        //if (useController) {
+        //    aim = new Vector3(Input.GetAxis("AimHorizontal"), Input.GetAxis("AimVertical"), 0.0f);
+        //    aim.Normalize();
+        //    isAiming = Input.GetButton("Fire");
+        //    endOfAiming = Input.GetButtonUp("Fire");
+        //}       
+        //else {
+            
            
             mousePosition = Input.mousePosition;
             screenPoint = Camera.main.WorldToScreenPoint(transform.localPosition);
@@ -69,7 +65,7 @@ public class PlayerController : MonoBehaviour {
             
             isAiming = Input.GetButton("Fire");
             endOfAiming = Input.GetButton("Fire1");
-        } 
+       // } 
         
         Vector2 shootingDirection = new Vector2(aim.x, aim.y);
         if(Input.GetButtonUp("Fire")) {
@@ -81,8 +77,15 @@ public class PlayerController : MonoBehaviour {
                 arrow.transform.Rotate(0.0f, 0.0f, Mathf.Atan2(shootingDirection.y, shootingDirection.x) * Mathf.Rad2Deg);
                 //destroys arrow after set time
                 Destroy(arrow, 2.0f);   
-        
+         
         }
+
+
+        //bowPos = aim;
+        //bowPos.Normalize();
+        //bowPos *= 0.1f;
+        //bow.transform.localPosition = bowPos;
+        //bow.transform.Rotate(0.0f, 0.0f, Mathf.Atan2(shootingDirection.y, shootingDirection.x) * Mathf.Rad2Deg);
     }
 
 
