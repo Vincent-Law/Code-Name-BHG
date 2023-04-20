@@ -105,12 +105,15 @@ MonoBehaviour:
   movement: {x: 0, y: 0}
   mouseMovement: {x: 1, y: 1, z: 0}
   aim: {x: 0, y: 0, z: 0}
+  bowPos: {x: 0, y: 0, z: 0}
   rb: {fileID: 1890363139678959218}
   animator: {fileID: 3902226235567580098}
   crossHair: {fileID: 4383577063804080846, guid: 4aa8dea031034874ba18dce803b14462,
     type: 3}
   arrowPrefab: {fileID: 1608702820766567197, guid: 6ebd73f1b83cf2a4e9848baa9d7fe4ec,
     type: 3}
+  bow: {fileID: 0}
+  player: {fileID: 5081685744827532385}
   useController: 0
   cam: {fileID: 0}
 --- !u!95 &3902226235567580098
