@@ -27,43 +27,40 @@ public class PlayerController : MonoBehaviour {
     public GameObject bow;
     public GameObject player;
 
-
-
     public bool useController;
+    Vector3 playerPos;
     Vector2 mousePosition;
     Vector3 screenPoint;
     Vector2 offset;
 
     public Camera cam;
 
+    void Awake() 
+    {
 
-
-    void Awake() {
     }
 
-    void Update() {
-
+    void Update() 
+    {
         ProcessInputs();
         Move();
         Animate();
-        
-
     }
-    void ProcessInputs(){
 
-           
-            mousePosition = Input.mousePosition;
-            screenPoint = Camera.main.WorldToScreenPoint(transform.localPosition);
+    void ProcessInputs()
+    {
+        playerPos = GameObject.Find("Player").transform.position;
+        mousePosition = Input.mousePosition;
+        screenPoint = Camera.main.WorldToScreenPoint(transform.localPosition);
        
-            offset = new Vector2(mousePosition.x - screenPoint.x, mousePosition.y - screenPoint.y);
+        offset = new Vector2(mousePosition.x - screenPoint.x, mousePosition.y - screenPoint.y);
 
-            crossHair.transform.position = screenPoint; // Vector3.Lerp(crossHair.transform.position, screenPoint, 1  * Time.deltaTime);
-            aim = offset;
+        crossHair.transform.position = screenPoint; // Vector3.Lerp(crossHair.transform.position, screenPoint, 1  * Time.deltaTime);
+        aim = offset;
             
-            isAiming = Input.GetButton("Fire");
-            endOfAiming = Input.GetButton("Fire1");
+        isAiming = Input.GetButton("Fire");
+        endOfAiming = Input.GetButton("Fire1");
        
-        
         Vector2 shootingDirection = new Vector2(aim.x, aim.y);
         if(Input.GetButtonUp("Fire")) {
                 //add rigibody2D component to arrow prefab
@@ -75,15 +72,19 @@ public class PlayerController : MonoBehaviour {
                 //provides shooting angle based on crosshair placement
                 arrow.transform.Rotate(0.0f, 0.0f, Mathf.Atan2(shootingDirection.y, shootingDirection.x) * Mathf.Rad2Deg);
             //logic to add for arrow stoping when near the end of its magnitude
-
-         
         }
-
 
         bowPos = screenPoint; //aim;
         bowPos.Normalize();
-        
-        
+    
+        screenPoint.z = playerPos.z;
+ 
+        Vector3 deltaPosition = screenPoint - transform.position;
+        animator.SetFloat("Magnitude", deltaPosition.magnitude);
+ 
+        Vector3 targetDirection = deltaPosition.normalized;
+        animator.SetFloat("Horizontal", targetDirection.x);
+        animator.SetFloat("Vertical", targetDirection.y);
     }
 
 
@@ -99,12 +100,11 @@ public class PlayerController : MonoBehaviour {
         else
         {
          rb.velocity = movement * movementSpeed * MOVEMENT_BASE_SPEED;
-        }
-        
+        }       
     }
 
     void Animate() {
-        mousePosition = Input.mousePosition;
+        //mousePosition = Input.mousePosition;
         ////sets animator variable to call paramter in animation window
         //if (movement != Vector2.zero){
         //    animator.SetFloat("Horizontal", movement.x);
@@ -112,10 +112,6 @@ public class PlayerController : MonoBehaviour {
         //}
         ////set speed paramter in animator
         //animator.SetFloat("Speed", movementSpeed);
-
-       
-
-
     }
     
 }
