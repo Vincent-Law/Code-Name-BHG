@@ -2137,6 +2137,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: PF Props Pillar
       objectReference: {fileID: 0}
+    - target: {fileID: 7947911505737750455, guid: 41ea6afb203377e42995d7d016ea5907,
+        type: 3}
+      propertyPath: m_Layer
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -2633,7 +2638,7 @@ GameObject:
   - component: {fileID: 443218701}
   - component: {fileID: 443218702}
   - component: {fileID: 443218703}
-  m_Layer: 0
+  m_Layer: 25
   m_Name: topCollider
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2670,7 +2675,7 @@ PolygonCollider2D:
     m_Bits: 0
   m_ExcludeLayers:
     serializedVersion: 2
-    m_Bits: 0
+    m_Bits: 7340087
   m_LayerOverridePriority: 0
   m_ForceSendLayers:
     serializedVersion: 2
@@ -2715,7 +2720,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a9eb63b3e993f174aa3979439941e90b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  crosshair: {fileID: 0}
+  direction: Top
 --- !u!1001 &466152685
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -6125,7 +6130,7 @@ PrefabInstance:
     - target: {fileID: 2055102311959635369, guid: 413081fc53a78a043b38591243616398,
         type: 3}
       propertyPath: m_Layer
-      value: 11
+      value: 20
       objectReference: {fileID: 0}
     - target: {fileID: 2055102311959635375, guid: 413081fc53a78a043b38591243616398,
         type: 3}
@@ -7314,7 +7319,7 @@ GameObject:
   - component: {fileID: 657766751}
   - component: {fileID: 657766752}
   - component: {fileID: 657766753}
-  m_Layer: 0
+  m_Layer: 25
   m_Name: bottomCollider
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -7351,7 +7356,7 @@ PolygonCollider2D:
     m_Bits: 0
   m_ExcludeLayers:
     serializedVersion: 2
-    m_Bits: 0
+    m_Bits: 7340087
   m_LayerOverridePriority: 0
   m_ForceSendLayers:
     serializedVersion: 2
@@ -7396,7 +7401,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a9eb63b3e993f174aa3979439941e90b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  crosshair: {fileID: 0}
+  direction: Bottom
 --- !u!1001 &676699401
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -7703,13 +7708,28 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3513292928090644674, guid: 4aa8dea031034874ba18dce803b14462,
         type: 3}
+      propertyPath: m_LocalScale.x
+      value: 0.26818237
+      objectReference: {fileID: 0}
+    - target: {fileID: 3513292928090644674, guid: 4aa8dea031034874ba18dce803b14462,
+        type: 3}
+      propertyPath: m_LocalScale.y
+      value: 0.26818237
+      objectReference: {fileID: 0}
+    - target: {fileID: 3513292928090644674, guid: 4aa8dea031034874ba18dce803b14462,
+        type: 3}
+      propertyPath: m_LocalScale.z
+      value: 2.6818237
+      objectReference: {fileID: 0}
+    - target: {fileID: 3513292928090644674, guid: 4aa8dea031034874ba18dce803b14462,
+        type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3513292928090644674, guid: 4aa8dea031034874ba18dce803b14462,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: -0.015
+      value: -0.0149999885
       objectReference: {fileID: 0}
     - target: {fileID: 3513292928090644674, guid: 4aa8dea031034874ba18dce803b14462,
         type: 3}
@@ -7756,6 +7776,16 @@ PrefabInstance:
       propertyPath: m_Name
       value: Crosshair
       objectReference: {fileID: 0}
+    - target: {fileID: 4383577063804080846, guid: 4aa8dea031034874ba18dce803b14462,
+        type: 3}
+      propertyPath: m_Layer
+      value: 25
+      objectReference: {fileID: 0}
+    - target: {fileID: 4383577063804080846, guid: 4aa8dea031034874ba18dce803b14462,
+        type: 3}
+      propertyPath: m_TagString
+      value: crosshair
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -7763,7 +7793,11 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 4383577063804080846, guid: 4aa8dea031034874ba18dce803b14462,
         type: 3}
       insertIndex: -1
-      addedObject: {fileID: 1837082306}
+      addedObject: {fileID: 1837082310}
+    - targetCorrespondingSourceObject: {fileID: 4383577063804080846, guid: 4aa8dea031034874ba18dce803b14462,
+        type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1837082309}
   m_SourcePrefab: {fileID: 100100000, guid: 4aa8dea031034874ba18dce803b14462, type: 3}
 --- !u!1001 &714932754
 PrefabInstance:
@@ -52859,7 +52893,7 @@ GameObject:
   - component: {fileID: 1466968272}
   - component: {fileID: 1466968273}
   - component: {fileID: 1466968274}
-  m_Layer: 0
+  m_Layer: 25
   m_Name: rightCollider
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -52896,7 +52930,7 @@ PolygonCollider2D:
     m_Bits: 0
   m_ExcludeLayers:
     serializedVersion: 2
-    m_Bits: 0
+    m_Bits: 7340087
   m_LayerOverridePriority: 0
   m_ForceSendLayers:
     serializedVersion: 2
@@ -52941,7 +52975,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a9eb63b3e993f174aa3979439941e90b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  crosshair: {fileID: 0}
+  direction: Right
 --- !u!1001 &1474561736
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -58225,13 +58259,15 @@ GameObject:
     type: 3}
   m_PrefabInstance: {fileID: 704006861}
   m_PrefabAsset: {fileID: 0}
---- !u!65 &1837082306
-BoxCollider:
+--- !u!61 &1837082309
+BoxCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1837082303}
+  m_Enabled: 1
+  m_Density: 1
   m_Material: {fileID: 0}
   m_IncludeLayers:
     serializedVersion: 2
@@ -58240,12 +58276,61 @@ BoxCollider:
     serializedVersion: 2
     m_Bits: 0
   m_LayerOverridePriority: 0
-  m_IsTrigger: 1
-  m_ProvidesContacts: 0
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Size: {x: 0.32, y: 0.32, z: 0.20000003}
-  m_Center: {x: 0, y: 0.0000009536743, z: 0}
+  m_ForceSendLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ForceReceiveLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ContactCaptureLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_CallbackLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0.5, y: 0.5}
+    oldSize: {x: 0.32, y: 0.32}
+    newSize: {x: 0.32, y: 0.32}
+    adaptiveTilingThreshold: 0.5
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  serializedVersion: 2
+  m_Size: {x: 0.32, y: 0.32}
+  m_EdgeRadius: 0
+--- !u!50 &1837082310
+Rigidbody2D:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1837082303}
+  m_BodyType: 0
+  m_Simulated: 1
+  m_UseFullKinematicContacts: 0
+  m_UseAutoMass: 0
+  m_Mass: 1
+  m_LinearDrag: 0
+  m_AngularDrag: 0.05
+  m_GravityScale: 1
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 0
+  m_Constraints: 0
 --- !u!1001 &1854521708
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -59373,7 +59458,7 @@ GameObject:
   - component: {fileID: 2051143784}
   - component: {fileID: 2051143785}
   - component: {fileID: 2051143786}
-  m_Layer: 0
+  m_Layer: 25
   m_Name: leftCollider
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -59410,7 +59495,7 @@ PolygonCollider2D:
     m_Bits: 0
   m_ExcludeLayers:
     serializedVersion: 2
-    m_Bits: 0
+    m_Bits: 7340087
   m_LayerOverridePriority: 0
   m_ForceSendLayers:
     serializedVersion: 2
@@ -59455,7 +59540,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a9eb63b3e993f174aa3979439941e90b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  crosshair: {fileID: 0}
+  direction: Left
 --- !u!1001 &2052553353
 PrefabInstance:
   m_ObjectHideFlags: 0
