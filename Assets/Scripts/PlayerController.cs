@@ -1,7 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.InputSystem;
 
 public class PlayerController : MonoBehaviour {
     [Header("Character Attributes:")]
@@ -50,8 +49,10 @@ public class PlayerController : MonoBehaviour {
         mousePosition = Input.mousePosition;
         screenPoint = Camera.main.WorldToScreenPoint(transform.localPosition);
         Debug.Log(screenPoint);
+        mousePosition = Input.mousePosition;
+        //screenPoint = Camera.main.WorldToScreenPoint(transform.localPosition);
        
-        offset = new Vector2(mousePosition.x - screenPoint.x, mousePosition.y - screenPoint.y);
+        //offset = new Vector2(mousePosition.x - screenPoint.x, mousePosition.y - screenPoint.y);
 
         crossHair.transform.position = screenPoint; // Vector3.Lerp(crossHair.transform.position, screenPoint, 1  * Time.deltaTime);
         aim = offset;
@@ -71,6 +72,15 @@ public class PlayerController : MonoBehaviour {
                 //provides shooting angle based on crosshair placement
                 arrow.transform.Rotate(0.0f, 0.0f, Mathf.Atan2(shootingDirection.y, shootingDirection.x) * Mathf.Rad2Deg);
                 //logic to add for arrow stoping when near the end of its magnitude
+            //add rigibody2D component to arrow prefab
+            GameObject arrow = Instantiate(arrowPrefab, rb.position + Vector2.up * 0.20f, Quaternion.identity); //Instantiate(arrowPrefab, transform.position, Quaternion.identity);
+            Physics2D.IgnoreCollision(arrow.GetComponent<Collider2D>(), player.GetComponent<Collider2D>());
+            
+            //set gravity scale to 0
+            arrow.GetComponent<Rigidbody2D>().velocity = shootingDirection * .05f;
+            //provides shooting angle based on crosshair placement
+            arrow.transform.Rotate(0.0f, 0.0f, Mathf.Atan2(shootingDirection.y, shootingDirection.x) * Mathf.Rad2Deg);
+            //logic to add for arrow stoping when near the end of its magnitude
         }
     }
 
