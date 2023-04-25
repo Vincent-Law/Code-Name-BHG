@@ -34,6 +34,9 @@ public class PlayerController : MonoBehaviour {
     void Awake() 
     {
 
+    void Awake() 
+    {
+
     }
 
     void Update() 
@@ -41,6 +44,7 @@ public class PlayerController : MonoBehaviour {
         ProcessInputs();
         Move();
         Animate();
+        
     }
 
     void ProcessInputs()
@@ -111,6 +115,7 @@ public class PlayerController : MonoBehaviour {
         animator.SetFloat("Horizontal", lookDirection.x);
         animator.SetFloat("Vertical", lookDirection.y);
         //leave speed calculated by movement vector since we don't want to switch off idle animation unless we are actually moving
+
         animator.SetFloat("Speed", movement.sqrMagnitude);
     }
     
