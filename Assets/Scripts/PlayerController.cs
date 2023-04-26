@@ -27,16 +27,11 @@ public class PlayerController : MonoBehaviour {
     public GameObject bow;
     public GameObject player;
 
-
-
     public bool useController;
     Vector2 mousePosition;
     Vector3 screenPoint;
     Vector2 offset;
-
-    public Camera cam;
-
-
+    Vector2 lookDirection;
 
     void Awake() {
     }
@@ -104,18 +99,17 @@ public class PlayerController : MonoBehaviour {
     }
 
     void Animate() {
-        mousePosition = Input.mousePosition;
-        ////sets animator variable to call paramter in animation window
-        //if (movement != Vector2.zero){
-        //    animator.SetFloat("Horizontal", movement.x);
-        //    animator.SetFloat("Vertical", movement.y);
-        //}
-        ////set speed paramter in animator
-        //animator.SetFloat("Speed", movementSpeed);
+        Vector3 mouseLocationPixels = new Vector3(Input.mousePosition.x, Input.mousePosition.y);
 
-       
+        Vector3 mouseLocationWorld = Camera.main.ScreenToWorldPoint(mouseLocationPixels);
 
+        lookDirection = (mouseLocationWorld - transform.position).normalized;
 
+        //set which direction the animations should play in based on the direction the player is looking/direction of the mouse
+        animator.SetFloat("Horizontal", lookDirection.x);
+        animator.SetFloat("Vertical", lookDirection.y);
+
+        animator.SetFloat("Speed", movement.sqrMagnitude);
     }
     
 }
