@@ -33,6 +33,9 @@ public class PlayerController : MonoBehaviour {
     Vector2 offset;
     Vector2 lookDirection;
 
+    public string playerName;
+    public int health;
+
     void Awake() {
     }
 
@@ -108,6 +111,20 @@ public class PlayerController : MonoBehaviour {
         animator.SetFloat("Vertical", lookDirection.y);
 
         animator.SetFloat("Speed", movement.sqrMagnitude);
+    }
+
+    public void TakeDamage(int damage)
+    {
+        health -= damage;
+        Debug.Log(playerName + " takes " + damage + " damage ");
+        if (health <=0)
+        {
+            Debug.Log(playerName + " has been defeated!");
+        }
+        else
+        {
+            Debug.Log(playerName + " has " + health + " health remaining.");
+        }
     }
     
 }
