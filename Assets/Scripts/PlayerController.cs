@@ -44,8 +44,8 @@ public class PlayerController : MonoBehaviour {
         
 
     }
-    void ProcessInputs(){
-
+    void ProcessInputs()
+    {
            
             mousePosition = Input.mousePosition;
             screenPoint = Camera.main.WorldToScreenPoint(transform.localPosition);
@@ -54,12 +54,11 @@ public class PlayerController : MonoBehaviour {
 
             crossHair.transform.position = screenPoint; // Vector3.Lerp(crossHair.transform.position, screenPoint, 1  * Time.deltaTime);
             aim = offset;
-            
+            Vector2 shootingDirection = new Vector2(aim.x, aim.y);
+
             isAiming = Input.GetButton("Fire");
             endOfAiming = Input.GetButton("Fire1");
        
-        
-        Vector2 shootingDirection = new Vector2(aim.x, aim.y);
         if(Input.GetButtonUp("Fire")) {
                 //add rigibody2D component to arrow prefab
                 GameObject arrow = Instantiate(arrowPrefab, rb.position + Vector2.up * 0.20f, Quaternion.identity); //Instantiate(arrowPrefab, transform.position, Quaternion.identity);
@@ -71,7 +70,6 @@ public class PlayerController : MonoBehaviour {
                 arrow.transform.Rotate(0.0f, 0.0f, Mathf.Atan2(shootingDirection.y, shootingDirection.x) * Mathf.Rad2Deg);
             //logic to add for arrow stoping when near the end of its magnitude
 
-         
         }
 
 
@@ -82,7 +80,8 @@ public class PlayerController : MonoBehaviour {
     }
 
 
-    void Move() {
+    void Move() 
+    {
         movement = new Vector2(Input.GetAxis("MoveHorizontal"), Input.GetAxis("MoveVertical"));
         movementSpeed = Mathf.Clamp(movement.magnitude, 0.0f, 1.0f);
         movement.Normalize();
@@ -98,7 +97,8 @@ public class PlayerController : MonoBehaviour {
         
     }
 
-    void Animate() {
+    void Animate() 
+    {
         Vector3 mouseLocationPixels = new Vector3(Input.mousePosition.x, Input.mousePosition.y);
 
         Vector3 mouseLocationWorld = Camera.main.ScreenToWorldPoint(mouseLocationPixels);
