@@ -14,8 +14,6 @@ public class PlayerController : MonoBehaviour {
     public Vector3 mouseMovement;
     public Vector3 aim;
     public Vector3 bowPos;
-    bool isAiming;
-    bool endOfAiming;
 
     [Space]
     [Header("References:")]
@@ -27,7 +25,7 @@ public class PlayerController : MonoBehaviour {
     public GameObject bow;
     public GameObject player;
 
-    public bool useController;
+    
     Vector2 mousePosition;
     Vector3 screenPoint;
     Vector2 offset;
@@ -43,8 +41,8 @@ public class PlayerController : MonoBehaviour {
 
         ProcessInputs();
         Move();
-        Animate();
-        
+        AnimateCharacter();
+        AnimateBow();
 
     }
     void ProcessInputs()
@@ -55,16 +53,13 @@ public class PlayerController : MonoBehaviour {
        
         offset = new Vector2(mousePosition.x - screenPoint.x, mousePosition.y - screenPoint.y);
 
-        crossHair.transform.position = screenPoint; // Vector3.Lerp(crossHair.transform.position, screenPoint, 1  * Time.deltaTime);
+        crossHair.transform.position = screenPoint; 
         aim = offset;
         Vector2 shootingDirection = new Vector2(aim.x, aim.y);
-
-        isAiming = Input.GetButton("Fire");
-        endOfAiming = Input.GetButton("Fire1");
        
         if(Input.GetButtonUp("Fire")) {
             //add rigibody2D component to arrow prefab
-            GameObject arrow = Instantiate(arrowPrefab, rb.position + Vector2.up * 0.20f, Quaternion.identity); //Instantiate(arrowPrefab, transform.position, Quaternion.identity);
+            GameObject arrow = Instantiate(arrowPrefab, rb.position /*+ Vector2.up * 0.20f*/, Quaternion.identity); //Instantiate(arrowPrefab, transform.position, Quaternion.identity);
             Physics2D.IgnoreCollision(arrow.GetComponent<Collider2D>(), player.GetComponent<Collider2D>());
             
             //set gravity scale to 0
@@ -72,10 +67,9 @@ public class PlayerController : MonoBehaviour {
             //provides shooting angle based on crosshair placement
             arrow.transform.Rotate(0.0f, 0.0f, Mathf.Atan2(shootingDirection.y, shootingDirection.x) * Mathf.Rad2Deg);
             //logic to add for arrow stoping when near the end of its magnitude
-
         }
 
-        bowPos = screenPoint; //aim;
+        bowPos = aim; 
         bowPos.Normalize();
         
     }
@@ -87,18 +81,18 @@ public class PlayerController : MonoBehaviour {
         movementSpeed = Mathf.Clamp(movement.magnitude, 0.0f, 1.0f);
         movement.Normalize();
         
-        if (Input.GetButtonDown("Fire"))
+        if (Input.GetButton("Fire"))
         {
-          rb.velocity = movement * movementSpeed * MOVEMENT_BASE_SPEED;
+            rb.velocity = movement * movementSpeed * MOVEMENT_BASE_SPEED * 0.5f;
         }
         else
         {
-         rb.velocity = movement * movementSpeed * MOVEMENT_BASE_SPEED;
+            rb.velocity = movement * movementSpeed * MOVEMENT_BASE_SPEED;
         }
         
     }
 
-    void Animate() 
+    void AnimateCharacter() 
     {
         Vector3 mouseLocationPixels = new Vector3(Input.mousePosition.x, Input.mousePosition.y);
 
@@ -111,6 +105,11 @@ public class PlayerController : MonoBehaviour {
         animator.SetFloat("Vertical", lookDirection.y);
 
         animator.SetFloat("Speed", movement.sqrMagnitude);
+    }
+
+    void AnimateBow()
+    {
+        
     }
 
     public void TakeDamage(int damage)
