@@ -9616,6 +9616,37 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 961692175}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &993281413
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 993281414}
+  m_Layer: 0
+  m_Name: ArrowSpawnPoint
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &993281414
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 993281413}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -0.022, y: 0.044, z: 0}
+  m_LocalScale: {x: 0.3229466, y: 0.3229466, z: 0.32294658}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1512783648}
+  m_RootOrder: -1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &1028577477
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -60375,12 +60406,29 @@ PrefabInstance:
         type: 3}
       propertyPath: animator
       value: 
-      objectReference: {fileID: 1512783651}
+      objectReference: {fileID: 0}
+    - target: {fileID: 2517813138039325047, guid: 59dcde83519a87647a4fa8210eee801d,
+        type: 3}
+      propertyPath: bowSprite
+      value: 
+      objectReference: {fileID: -1832853777, guid: ce289c5f95b15a840beb1c15423bb5d1,
+        type: 3}
+    - target: {fileID: 2517813138039325047, guid: 59dcde83519a87647a4fa8210eee801d,
+        type: 3}
+      propertyPath: arrowSprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 301b9ba37aeee79478702764e86e42a9,
+        type: 3}
     - target: {fileID: 2517813138039325047, guid: 59dcde83519a87647a4fa8210eee801d,
         type: 3}
       propertyPath: spriteRenderer
       value: 
       objectReference: {fileID: 1512783649}
+    - target: {fileID: 2517813138039325047, guid: 59dcde83519a87647a4fa8210eee801d,
+        type: 3}
+      propertyPath: arrowSpawnPoint
+      value: 
+      objectReference: {fileID: 993281414}
     - target: {fileID: 4828315039837946890, guid: 59dcde83519a87647a4fa8210eee801d,
         type: 3}
       propertyPath: m_RootOrder
@@ -60453,7 +60501,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
-    m_AddedGameObjects: []
+    m_AddedGameObjects:
+    - targetCorrespondingSourceObject: {fileID: 4828315039837946890, guid: 59dcde83519a87647a4fa8210eee801d,
+        type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 993281414}
     m_AddedComponents:
     - targetCorrespondingSourceObject: {fileID: 1629618075612604551, guid: 59dcde83519a87647a4fa8210eee801d,
         type: 3}

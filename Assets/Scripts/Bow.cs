@@ -2,16 +2,17 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Bow : MonoBehaviour
+public class BowController : MonoBehaviour
 {
     public Animator animator;
     
-    public float maxChargeTime = 2.0f;
-    public float minDamage = 1.0f;
-    public float maxDamage = 10.0f;
-    private GameObject arrowPrefab;
-    private float currentHoldTime;
-    private float chargeTime = 0.0f;
+    public Transform arrowSpawnPoint;
+    public GameObject arrowPrefab;
+    public float drawTime = 1.0f;
+    public float maxDrawDistance = 2.0f;
+
+    private bool isDrawing = false;
+    private float drawStartTime = 0.0f;
 
     void Start()
     {
@@ -25,28 +26,43 @@ public class Bow : MonoBehaviour
         Quaternion rotation = Quaternion.AngleAxis(angle - 90, Vector3.forward);
         transform.rotation = rotation;
 
-        if (Input.GetButton("Fire"))
+        if (Input.GetButtonDown("Fire1"))
         {
-            // Charge up the bow
-            chargeTime += Time.deltaTime;
-            if (chargeTime > maxChargeTime)
-            {
-                chargeTime = maxChargeTime;
-            }
-
-            animator.SetFloat("ChargeSpeed", chargeTime / maxChargeTime);
-            animator.SetBool("IsCharging", true);
+            StartDrawing();
         }
-        else if (Input.GetButtonUp("Fire"))
+        else if (Input.GetButtonUp("Fire1"))
         {
-            // Release the arrow
-            animator.SetBool("IsCharging", false);
+            StopDrawing();
+            FireArrow();
+        }
 
-            //GameObject arrow = Instantiate(arrowPrefab, arrowSpawnPoint.position, arrowSpawnPoint.rotation);
-            //float damage = Mathf.Lerp(minDamage, maxDamage, chargeTime / maxChargeTime);
-            //arrow.GetComponent<ArrowController>().SetDamage(damage);
+        if (isDrawing)
+        {
+            float drawProgress = Mathf.Clamp01((Time.time - drawStartTime) / drawTime);
+            animator.SetFloat("drawProgress", drawProgress);
+        }
+    }
 
-            chargeTime = 0.0f;
+    private void StartDrawing()
+    {
+        isDrawing = true;
+        drawStartTime = Time.time;
+        animator.SetBool("isDrawing", true);
+    }
+
+    private void StopDrawing()
+    {
+        isDrawing = false;
+        animator.SetBool("isDrawing", false);
+    }
+
+    private void FireArrow()
+    {
+        if (arrowPrefab != null)
+        {
+            GameObject arrow = Instantiate(arrowPrefab, arrowSpawnPoint.position, arrowSpawnPoint.rotation);
+            float drawDistance = Mathf.Min(maxDrawDistance, Vector2.Distance(transform.position, arrowSpawnPoint.position));
+            arrow.GetComponent<ArrowController>().Fire(drawDistance);
         }
     }
 
