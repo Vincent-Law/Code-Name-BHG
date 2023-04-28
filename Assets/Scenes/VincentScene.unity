@@ -19098,6 +19098,11 @@ PrefabInstance:
       propertyPath: player
       value: 
       objectReference: {fileID: 1682321747}
+    - target: {fileID: -4095877889592860869, guid: a694a12a129f9b74cbe4400752fff188,
+        type: 3}
+      propertyPath: playerName
+      value: Penur
+      objectReference: {fileID: 0}
     - target: {fileID: 3242880182683626601, guid: a694a12a129f9b74cbe4400752fff188,
         type: 3}
       propertyPath: m_RootOrder
@@ -59196,6 +59201,12 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 1921816726}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &1966620940 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 4383577063804080846, guid: 4aa8dea031034874ba18dce803b14462,
+    type: 3}
+  m_PrefabInstance: {fileID: 704006861}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1975223469
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -60392,6 +60403,27 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1682321753}
     m_Modifications:
+    - target: {fileID: 1349062356445890944, guid: 59dcde83519a87647a4fa8210eee801d,
+        type: 3}
+      propertyPath: animator
+      value: 
+      objectReference: {fileID: 1512783651}
+    - target: {fileID: 1349062356445890944, guid: 59dcde83519a87647a4fa8210eee801d,
+        type: 3}
+      propertyPath: crossHair
+      value: 
+      objectReference: {fileID: 1966620940}
+    - target: {fileID: 1349062356445890944, guid: 59dcde83519a87647a4fa8210eee801d,
+        type: 3}
+      propertyPath: arrowPrefab
+      value: 
+      objectReference: {fileID: 1608702820766567197, guid: 6ebd73f1b83cf2a4e9848baa9d7fe4ec,
+        type: 3}
+    - target: {fileID: 1349062356445890944, guid: 59dcde83519a87647a4fa8210eee801d,
+        type: 3}
+      propertyPath: arrowSpawnPoint
+      value: 
+      objectReference: {fileID: 993281414}
     - target: {fileID: 1629618075612604551, guid: 59dcde83519a87647a4fa8210eee801d,
         type: 3}
       propertyPath: m_Name

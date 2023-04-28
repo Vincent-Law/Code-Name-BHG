@@ -13,6 +13,7 @@ public class BowController : MonoBehaviour
     public float maxDrawDistance = 2.0f;
 
     private bool isDrawing = false;
+    private bool fire = false;
     private float drawStartTime = 0.0f;
 
     Vector2 mousePosition;
@@ -52,10 +53,13 @@ public class BowController : MonoBehaviour
         {
             StartDrawing();
         }
-        else if (Input.GetButtonUp("Fire"))
+
+        if (Input.GetButtonUp("Fire"))
         {
+            
             StopDrawing();
             FireArrow();
+            
         }
 
         if (isDrawing)
@@ -74,18 +78,23 @@ public class BowController : MonoBehaviour
 
     private void StopDrawing()
     {
+        
         isDrawing = false;
         animator.SetBool("isDrawing", false);
+        
+        animator.SetBool("fire", true);
     }
 
     private void FireArrow()
     {
+        
         if (arrowPrefab != null)
         {
             GameObject arrow = Instantiate(arrowPrefab, arrowSpawnPoint.position, arrowSpawnPoint.rotation);
             float drawDistance = Mathf.Min(maxDrawDistance, Vector2.Distance(transform.position, arrowSpawnPoint.position));
             arrow.GetComponent<ArrowController>().Fire(drawDistance);
         }
+        
     }
 
 }
