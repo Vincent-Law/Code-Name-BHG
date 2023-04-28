@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: -6114411717269394911}
   - component: {fileID: 3029197358022978053}
   - component: {fileID: 7215856149465776313}
+  - component: {fileID: 5399020393238700624}
   m_Layer: 6
   m_Name: Reaper
   m_TagString: Untagged
@@ -33,7 +34,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 4
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &7877983204463552657
 SpriteRenderer:
@@ -99,6 +100,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 90575b2a44e368f4b9446fb86d55a16f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  maxHealth: 100
+  currentHealth: 0
+  moveSpeed: 5
+  attackRange: 2
+  attackDamage: 10
+  attackCooldown: 2
 --- !u!61 &3029197358022978053
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -171,3 +178,24 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 4
+--- !u!95 &5399020393238700624
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4597968167073821110}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: cc549e82d34388f4ea01f1387afcdeb4, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0

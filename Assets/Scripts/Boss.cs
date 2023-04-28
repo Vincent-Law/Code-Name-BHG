@@ -8,18 +8,24 @@ public class Boss : MonoBehaviour
     public float currentHealth;
     public float moveSpeed = 5f;
     public float attackRange = 2f;
-    public int attackDamage = 10;
-    public float attackCooldown = 2f;
+    //public int attackDamage = 10;
+    //public float attackCooldown = 2f;
 
     private bool isAttacking = false;
     private bool canAttack = true;
     private Transform player;
+    private Animator animator;
+
+    // Array of attacks
+    public BossAttack[] attacks;
+    private int currentAttackIndex = 0;
 
     // Start is called before the first frame update
     void Start()
     {
         currentHealth = maxHealth;
         player = GameObject.FindGameObjectWithTag("Player").transform;
+        animator = GetComponent<Animator>();
     }
 
     // Update is called once per frame
@@ -36,6 +42,9 @@ public class Boss : MonoBehaviour
                 StartCoroutine(Attack());
             }
         }
+
+        //set animation parameters
+        animator.SetBool("isAttacking", true);
     }
 
     IEnumerator Attack()
@@ -45,22 +54,22 @@ public class Boss : MonoBehaviour
         //stop moving
         GetComponent<Rigidbody2D>().velocity = Vector2.zero;
 
+        //choose current attack from the attacks array
+        BossAttack currentAttack = attacks[currentAttackIndex];
+
         //attack animation
 
+        //deal damage to player
+        player.GetComponent<PlayerController>().TakeDamage(currentAttack.damage);
 
-        if (canAttack)
-        {
-            //deal damage to player
-            player.GetComponent<PlayerController>().TakeDamage(attackDamage);
-
-            //set attack cooldown
-            canAttack = false;
-            yield return new WaitForSeconds(attackCooldown);
-            canAttack = true;
-        }
+        //set attack cooldown
+        yield return new WaitForSeconds(currentAttack.cooldown);
 
         //resume movement
         isAttacking = false;
+
+        //increment current attack index, looping back to 0 if necessary
+        currentAttackIndex = (currentAttackIndex + 1) % attacks.Length;
     }
 
     public void TakeDamage(float damage)
@@ -76,8 +85,16 @@ public class Boss : MonoBehaviour
     void Die() 
     {
         //death animation
-
+        animator.SetTrigger("fuckingDies");
         //destroy boss
         Destroy(gameObject);
+    }
+
+    public class BossAttack
+    {
+        public int damage;
+        public float range;
+        public float cooldown;
+        public AnimationClip animation;
     }
 }

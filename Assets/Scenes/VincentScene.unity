@@ -19098,6 +19098,21 @@ PrefabInstance:
       propertyPath: m_Name
       value: Reaper
       objectReference: {fileID: 0}
+    - target: {fileID: 7877983204463552657, guid: d6221ee4d1448ac479a8f8004e454ddf,
+        type: 3}
+      propertyPath: m_SortingLayer
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 7877983204463552657, guid: d6221ee4d1448ac479a8f8004e454ddf,
+        type: 3}
+      propertyPath: m_SortingOrder
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 7877983204463552657, guid: d6221ee4d1448ac479a8f8004e454ddf,
+        type: 3}
+      propertyPath: m_SortingLayerID
+      value: -105541197
+      objectReference: {fileID: 0}
     - target: {fileID: 9035463227916703312, guid: d6221ee4d1448ac479a8f8004e454ddf,
         type: 3}
       propertyPath: m_RootOrder
@@ -19106,12 +19121,12 @@ PrefabInstance:
     - target: {fileID: 9035463227916703312, guid: d6221ee4d1448ac479a8f8004e454ddf,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 23.31
+      value: 26.1
       objectReference: {fileID: 0}
     - target: {fileID: 9035463227916703312, guid: d6221ee4d1448ac479a8f8004e454ddf,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: -6.81
+      value: 24.5
       objectReference: {fileID: 0}
     - target: {fileID: 9035463227916703312, guid: d6221ee4d1448ac479a8f8004e454ddf,
         type: 3}
