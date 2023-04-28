@@ -42,7 +42,6 @@ public class PlayerController : MonoBehaviour {
         ProcessInputs();
         Move();
         AnimateCharacter();
-        AnimateBow();
 
     }
     void ProcessInputs()
@@ -69,9 +68,6 @@ public class PlayerController : MonoBehaviour {
            // arrow.transform.Rotate(0.0f, 0.0f, Mathf.Atan2(shootingDirection.y, shootingDirection.x) * Mathf.Rad2Deg);
             //logic to add for arrow stoping when near the end of its magnitude
        // }
-
-        //bowPos = aim; 
-        //bowPos.Normalize();
         
     }
 
@@ -106,11 +102,6 @@ public class PlayerController : MonoBehaviour {
         animator.SetFloat("Vertical", lookDirection.y);
 
         animator.SetFloat("Speed", movement.sqrMagnitude);
-    }
-
-    void AnimateBow()
-    {
-        
     }
 
     public void TakeDamage(int damage)
