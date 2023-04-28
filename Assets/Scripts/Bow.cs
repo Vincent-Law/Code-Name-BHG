@@ -8,11 +8,19 @@ public class BowController : MonoBehaviour
     
     public Transform arrowSpawnPoint;
     public GameObject arrowPrefab;
+    public GameObject crossHair;
     public float drawTime = 1.0f;
     public float maxDrawDistance = 2.0f;
 
     private bool isDrawing = false;
     private float drawStartTime = 0.0f;
+
+    Vector2 mousePosition;
+    Vector3 screenPoint;
+    Vector2 offset;
+    public Vector3 bowPos;
+    public Vector3 aim;
+    public Rigidbody2D rb;
 
     void Start()
     {
@@ -21,16 +29,30 @@ public class BowController : MonoBehaviour
 
     void Update()
     {
+        mousePosition = Input.mousePosition;
+        screenPoint = Camera.main.WorldToScreenPoint(transform.localPosition);
+       
+        offset = new Vector2(mousePosition.x - screenPoint.x, mousePosition.y - screenPoint.y);
+
+        crossHair.transform.position = screenPoint; 
+        aim = offset;
+        Vector2 shootingDirection = new Vector2(aim.x, aim.y);
+
+        bowPos = aim; 
+        bowPos.Normalize();
+        // Adjust the rotation of the bow
+        transform.Rotate(0, 90, -90);
+
         Vector2 dir = Camera.main.ScreenToWorldPoint(Input.mousePosition) - transform.position;
         float angle = Mathf.Atan2(dir.y, dir.x) * Mathf.Rad2Deg;
         Quaternion rotation = Quaternion.AngleAxis(angle - 90, Vector3.forward);
         transform.rotation = rotation;
 
-        if (Input.GetButtonDown("Fire1"))
+        if (Input.GetButtonDown("Fire"))
         {
             StartDrawing();
         }
-        else if (Input.GetButtonUp("Fire1"))
+        else if (Input.GetButtonUp("Fire"))
         {
             StopDrawing();
             FireArrow();

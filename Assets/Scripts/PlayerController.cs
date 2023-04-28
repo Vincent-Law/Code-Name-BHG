@@ -12,23 +12,23 @@ public class PlayerController : MonoBehaviour {
     public float movementSpeed;
     public Vector2 movement;
     public Vector3 mouseMovement;
-    public Vector3 aim;
-    public Vector3 bowPos;
+    //public Vector3 aim;
+    //public Vector3 bowPos;
 
     [Space]
     [Header("References:")]
     public Rigidbody2D rb;
     public Animator animator;
 
-    public GameObject crossHair;
-    public GameObject arrowPrefab;
+    //public GameObject crossHair;
+    //public GameObject arrowPrefab;
     public GameObject bow;
     public GameObject player;
 
     
-    Vector2 mousePosition;
-    Vector3 screenPoint;
-    Vector2 offset;
+    //Vector2 mousePosition;
+    //Vector3 screenPoint;
+    //Vector2 offset;
     Vector2 lookDirection;
 
     public string playerName;
@@ -48,29 +48,30 @@ public class PlayerController : MonoBehaviour {
     void ProcessInputs()
     {
            
-        mousePosition = Input.mousePosition;
-        screenPoint = Camera.main.WorldToScreenPoint(transform.localPosition);
+        //mousePosition = Input.mousePosition;
+        //screenPoint = Camera.main.WorldToScreenPoint(transform.localPosition);
        
-        offset = new Vector2(mousePosition.x - screenPoint.x, mousePosition.y - screenPoint.y);
+        //offset = new Vector2(mousePosition.x - screenPoint.x, mousePosition.y - screenPoint.y);
 
-        crossHair.transform.position = screenPoint; 
-        aim = offset;
-        Vector2 shootingDirection = new Vector2(aim.x, aim.y);
+        //crossHair.transform.position = screenPoint; 
+        //aim = offset;
+        //Vector2 shootingDirection = new Vector2(aim.x, aim.y);
        
-        if(Input.GetButtonUp("Fire")) {
+       
+        //if(Input.GetButtonUp("Fire")) {
             //add rigibody2D component to arrow prefab
-            GameObject arrow = Instantiate(arrowPrefab, rb.position /*+ Vector2.up * 0.20f*/, Quaternion.identity); //Instantiate(arrowPrefab, transform.position, Quaternion.identity);
-            Physics2D.IgnoreCollision(arrow.GetComponent<Collider2D>(), player.GetComponent<Collider2D>());
+           // GameObject arrow = Instantiate(arrowPrefab, rb.position /*+ Vector2.up * 0.20f*/, Quaternion.identity); //Instantiate(arrowPrefab, transform.position, Quaternion.identity);
+            //Physics2D.IgnoreCollision(arrow.GetComponent<Collider2D>(), player.GetComponent<Collider2D>());
             
             //set gravity scale to 0
-            arrow.GetComponent<Rigidbody2D>().velocity = shootingDirection * .05f;
+           // arrow.GetComponent<Rigidbody2D>().velocity = shootingDirection * .05f;
             //provides shooting angle based on crosshair placement
-            arrow.transform.Rotate(0.0f, 0.0f, Mathf.Atan2(shootingDirection.y, shootingDirection.x) * Mathf.Rad2Deg);
+           // arrow.transform.Rotate(0.0f, 0.0f, Mathf.Atan2(shootingDirection.y, shootingDirection.x) * Mathf.Rad2Deg);
             //logic to add for arrow stoping when near the end of its magnitude
-        }
+       // }
 
-        bowPos = aim; 
-        bowPos.Normalize();
+        //bowPos = aim; 
+        //bowPos.Normalize();
         
     }
 
