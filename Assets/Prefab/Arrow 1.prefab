@@ -171,5 +171,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 107342b25507fd64ab9660e76f423832, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  arrow: {fileID: 1608702820766567197}
+  arrowPrefab: {fileID: 1608702820766567197}
   player: {fileID: 5081685744827532385, guid: a694a12a129f9b74cbe4400752fff188, type: 3}

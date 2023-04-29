@@ -94,7 +94,7 @@ public class BowController : MonoBehaviour
 
             //add rigibody2D component to arrow prefab
              GameObject arrow = Instantiate(arrowPrefab, rb.position /*+ Vector2.up * 0.20f*/, Quaternion.identity);
-            Physics2D.IgnoreCollision(arrow.GetComponent<Collider2D>(), player.GetComponent<Collider2D>());
+            //Physics2D.IgnoreCollision(arrowPrefab.GetComponent<Collider2D>(), player.GetComponent<Collider2D>());
             
             Instantiate(arrowPrefab, transform.position, Quaternion.identity);
             

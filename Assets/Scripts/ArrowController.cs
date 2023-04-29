@@ -2,7 +2,7 @@ using UnityEngine;
 
 public class ArrowController : MonoBehaviour
 {
-    public GameObject arrow;
+    public GameObject arrowPrefab;
     public GameObject player;
 
    
@@ -13,7 +13,7 @@ public class ArrowController : MonoBehaviour
         
             // Do something when the arrow collides with something
             // For example, you could play a sound, apply damage to an enemy, or create a particle effect.
-            Physics2D.IgnoreCollision(player.GetComponent<Collider2D>(), arrow.GetComponent<Collider2D>());
+            Physics2D.IgnoreCollision(player.GetComponent<Collider2D>(), arrowPrefab.GetComponent<Collider2D>());
         
     }
 }
