@@ -60,7 +60,8 @@ public class PlayerController : MonoBehaviour {
        
     //    //if(Input.GetButtonUp("Fire")) {
     //        //add rigibody2D component to arrow prefab
-    //       // GameObject arrow = Instantiate(arrowPrefab, rb.position /*+ Vector2.up * 0.20f*/, Quaternion.identity); //Instantiate(arrowPrefab, transform.position, Quaternion.identity);
+    //       // GameObject arrow = Instantiate(arrowPrefab, rb.position /*+ Vector2.up * 0.20f*/, Quaternion.identity); 
+             //Instantiate(arrowPrefab, transform.position, Quaternion.identity);
     //        //Physics2D.IgnoreCollision(arrow.GetComponent<Collider2D>(), player.GetComponent<Collider2D>());
             
     //        //set gravity scale to 0
