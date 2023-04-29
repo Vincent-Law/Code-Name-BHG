@@ -13,8 +13,8 @@ public class BowController : MonoBehaviour
     public float drawTime = 1.0f;
     public float maxDrawDistance = 2.0f;
 
-    private bool isDrawing = false;
-    private bool fire = false;
+   private bool isDrawing = false;
+    //private bool fire = false;
     private float drawStartTime = 0.0f;
 
     Vector2 mousePosition;
@@ -22,7 +22,7 @@ public class BowController : MonoBehaviour
     Vector2 offset;
     public Vector3 bowPos;
     public Vector3 aim;
-    public Rigidbody2D rb;
+    //public Rigidbody2D rb;
 
     void Start()
     {
@@ -91,8 +91,8 @@ public class BowController : MonoBehaviour
             //Physics2D.IgnoreCollision(arrow.GetComponent<Collider2D>(), player.GetComponent<Collider2D>());
 
             //add rigibody2D component to arrow prefab
-            GameObject arrow = Instantiate(arrowPrefab, rb.position + Vector2.up * 0.20f, Quaternion.identity); //Instantiate(arrowPrefab, transform.position, Quaternion.identity);
-            Physics2D.IgnoreCollision(arrow.GetComponent<Collider2D>(), player.GetComponent<Collider2D>());
+            //GameObject arrow = Instantiate(arrowPrefab, rb.position + Vector2.up * 0.20f, Quaternion.identity); //Instantiate(arrowPrefab, transform.position, Quaternion.identity);
+            //Physics2D.IgnoreCollision(arrow.GetComponent<Collider2D>(), player.GetComponent<Collider2D>());
             
             //set gravity scale to 0
             //arrow.GetComponent<Rigidbody2D>().velocity = shootingDirection * .05f;

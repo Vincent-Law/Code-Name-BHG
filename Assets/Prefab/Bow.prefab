@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 1349062356445890944}
   - component: {fileID: 5122773859082121394}
   - component: {fileID: 9116534601055605670}
-  m_Layer: 0
+  m_Layer: 20
   m_Name: Bow
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -46,11 +46,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5c87913de00598447a35ace13c544156, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  animator: {fileID: 0}
-  arrowSpawnPoint: {fileID: 0}
-  arrowPrefab: {fileID: 0}
+  animator: {fileID: 9116534601055605670}
+  arrowSpawnPoint: {fileID: 4828315039837946890}
+  arrowPrefab: {fileID: 1608702820766567197, guid: 6ebd73f1b83cf2a4e9848baa9d7fe4ec,
+    type: 3}
+  crossHair: {fileID: 4383577063804080846, guid: 4aa8dea031034874ba18dce803b14462,
+    type: 3}
+  player: {fileID: 5081685744827532385, guid: a694a12a129f9b74cbe4400752fff188, type: 3}
   drawTime: 1
   maxDrawDistance: 2
+  bowPos: {x: 0, y: 0, z: 0}
+  aim: {x: 0, y: 0, z: 0}
 --- !u!212 &5122773859082121394
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -89,9 +95,9 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: -44025399
-  m_SortingLayer: 2
-  m_SortingOrder: 1
+  m_SortingLayerID: -1869315837
+  m_SortingLayer: 1
+  m_SortingOrder: 2
   m_Sprite: {fileID: -1832853777, guid: ce289c5f95b15a840beb1c15423bb5d1, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0

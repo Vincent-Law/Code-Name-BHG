@@ -6,6 +6,7 @@ using UnityEngine.InputSystem;
 public class PlayerController : MonoBehaviour {
     [Header("Character Attributes:")]
     public float MOVEMENT_BASE_SPEED = 5f;
+    
 
     [Space]
     [Header("Character Statistics:")]
@@ -39,45 +40,45 @@ public class PlayerController : MonoBehaviour {
 
     void Update() {
 
-        ProcessInputs();
+        //ProcessInputs();
         Move();
         AnimateCharacter();
 
     }
-    void ProcessInputs()
-    {
+    //void ProcessInputs()
+    //{
            
-        //mousePosition = Input.mousePosition;
-        //screenPoint = Camera.main.WorldToScreenPoint(transform.localPosition);
+    //    //mousePosition = Input.mousePosition;
+    //    //screenPoint = Camera.main.WorldToScreenPoint(transform.localPosition);
        
-        //offset = new Vector2(mousePosition.x - screenPoint.x, mousePosition.y - screenPoint.y);
+    //    //offset = new Vector2(mousePosition.x - screenPoint.x, mousePosition.y - screenPoint.y);
 
-        //crossHair.transform.position = screenPoint; 
-        //aim = offset;
-        //Vector2 shootingDirection = new Vector2(aim.x, aim.y);
+    //    //crossHair.transform.position = screenPoint; 
+    //    //aim = offset;
+    //    //Vector2 shootingDirection = new Vector2(aim.x, aim.y);
        
        
-        //if(Input.GetButtonUp("Fire")) {
-            //add rigibody2D component to arrow prefab
-           // GameObject arrow = Instantiate(arrowPrefab, rb.position /*+ Vector2.up * 0.20f*/, Quaternion.identity); //Instantiate(arrowPrefab, transform.position, Quaternion.identity);
-            //Physics2D.IgnoreCollision(arrow.GetComponent<Collider2D>(), player.GetComponent<Collider2D>());
+    //    //if(Input.GetButtonUp("Fire")) {
+    //        //add rigibody2D component to arrow prefab
+    //       // GameObject arrow = Instantiate(arrowPrefab, rb.position /*+ Vector2.up * 0.20f*/, Quaternion.identity); //Instantiate(arrowPrefab, transform.position, Quaternion.identity);
+    //        //Physics2D.IgnoreCollision(arrow.GetComponent<Collider2D>(), player.GetComponent<Collider2D>());
             
-            //set gravity scale to 0
-           // arrow.GetComponent<Rigidbody2D>().velocity = shootingDirection * .05f;
-            //provides shooting angle based on crosshair placement
-           // arrow.transform.Rotate(0.0f, 0.0f, Mathf.Atan2(shootingDirection.y, shootingDirection.x) * Mathf.Rad2Deg);
-            //logic to add for arrow stoping when near the end of its magnitude
-       // }
+    //        //set gravity scale to 0
+    //       // arrow.GetComponent<Rigidbody2D>().velocity = shootingDirection * .05f;
+    //        //provides shooting angle based on crosshair placement
+    //       // arrow.transform.Rotate(0.0f, 0.0f, Mathf.Atan2(shootingDirection.y, shootingDirection.x) * Mathf.Rad2Deg);
+    //        //logic to add for arrow stoping when near the end of its magnitude
+    //   // }
         
-    }
+    //}
 
 
-    void Move() 
+    void Move()
     {
         movement = new Vector2(Input.GetAxis("MoveHorizontal"), Input.GetAxis("MoveVertical"));
         movementSpeed = Mathf.Clamp(movement.magnitude, 0.0f, 1.0f);
         movement.Normalize();
-        
+
         if (Input.GetButton("Fire"))
         {
             rb.velocity = movement * movementSpeed * MOVEMENT_BASE_SPEED * 0.5f;
@@ -86,7 +87,7 @@ public class PlayerController : MonoBehaviour {
         {
             rb.velocity = movement * movementSpeed * MOVEMENT_BASE_SPEED;
         }
-        
+
     }
 
     void AnimateCharacter() 
