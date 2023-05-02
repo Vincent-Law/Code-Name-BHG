@@ -7,7 +7,7 @@ public class BossController : MonoBehaviour
     private float maxHealth = 100f;
     private float currentHealth;
     private float moveSpeed = 5f;
-    private float attackRange = 0.5f;
+    private float attackRange = 10f;
     private int attackDamage = 10;
     private float attackCooldown = 2f;
 
@@ -21,6 +21,7 @@ public class BossController : MonoBehaviour
     {
         currentHealth = maxHealth;
         player = GameObject.FindGameObjectWithTag("Player").transform;
+        Debug.Log(player);
         animator = GetComponent<Animator>();
     }
 
