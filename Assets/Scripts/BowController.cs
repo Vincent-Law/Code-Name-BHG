@@ -14,7 +14,7 @@ public class BowController : MonoBehaviour
     public float maxDrawDistance = 2.0f;
     private float drawProgress;
 
-   private bool isDrawing = false;
+    private bool isDrawing = false;
     //private bool fire = false;
     private float drawStartTime = 0.0f;
 
@@ -64,7 +64,12 @@ public class BowController : MonoBehaviour
             FireArrow(drawProgress, rotation, angle, dir);
         }
 
-        
+        float bowAngle = transform.eulerAngles.z;
+        if (bowAngle < 150f && bowAngle > 32f)
+        {
+            
+        }
+
     }
 
     private void StartDrawing()
@@ -84,7 +89,7 @@ public class BowController : MonoBehaviour
     private void FireArrow(float drawProgess, Quaternion rotation,float angle, Vector2 dir )
     {
         
-        if (arrowPrefab != null)
+        if (Input.GetButtonDown("Fire"))
         {
             //Debug.Log(drawProgress);
             //GameObject arrow = Instantiate(arrowPrefab, rb.position + Vector2.up * 0.20f, Quaternion.identity);
@@ -93,33 +98,14 @@ public class BowController : MonoBehaviour
             //arrow.transform.Rotate(0.0f, 0.0f, Mathf.Atan2(aim.y, aim.x) * Mathf.Rad2Deg);
 
             //add rigibody2D component to arrow prefab
-             GameObject arrow = Instantiate(arrowPrefab, rb.position /*+ Vector2.up * 0.20f*/, Quaternion.identity);
-            //Physics2D.IgnoreCollision(arrowPrefab.GetComponent<Collider2D>(), player.GetComponent<Collider2D>());
+            GameObject arrow = Instantiate(arrowPrefab, rb.position + Vector2.up * 0.20f, Quaternion.identity);
+            Physics2D.IgnoreCollision(arrowPrefab.GetComponent<Collider2D>(), player.GetComponent<Collider2D>());
             
-            Instantiate(arrowPrefab, transform.position, Quaternion.identity);
-            
-
             //set gravity scale to 0
              arrow.GetComponent<Rigidbody2D>().velocity = dir * drawProgess *2f;
            // provides shooting angle based on crosshair placement
              arrow.transform.Rotate(0.0f, 0.0f, Mathf.Atan2(dir.y, dir.x) * Mathf.Rad2Deg);
            // logic to add for arrow stoping when near the end of its magnitude
-
-
-
-            //float drawDistance = Mathf.Min(maxDrawDistance, Vector2.Distance(transform.position, arrowSpawnPoint.position));
-            //arrow.GetComponent<ArrowController>().Fire(drawDistance);
-            //Physics2D.IgnoreCollision(arrow.GetComponent<Collider2D>(), player.GetComponent<Collider2D>());
-
-                //add rigibody2D component to arrow prefab
-                //GameObject arrow = Instantiate(arrowPrefab, rb.position + Vector2.up * 0.20f, Quaternion.identity); //Instantiate(arrowPrefab, transform.position, Quaternion.identity);
-                //Physics2D.IgnoreCollision(arrow.GetComponent<Collider2D>(), player.GetComponent<Collider2D>());
-
-                //set gravity scale to 0
-                //arrow.GetComponent<Rigidbody2D>().velocity = shootingDirection * .05f;
-                //provides shooting angle based on crosshair placement
-                //arrow.transform.Rotate(0.0f, 0.0f, Mathf.Atan2(shootingDirection.y, shootingDirection.x) * Mathf.Rad2Deg);
-                //logic to add for arrow stoping when near the end of its magnitude
         }
 
     }

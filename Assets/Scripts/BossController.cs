@@ -2,23 +2,19 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Boss : MonoBehaviour
+public class BossController : MonoBehaviour
 {
-    public float maxHealth = 100f;
-    public float currentHealth;
-    public float moveSpeed = 5f;
-    public float attackRange = 0.5f;
-    public int attackDamage = 10;
-    public float attackCooldown = 2f;
+    private float maxHealth = 100f;
+    private float currentHealth;
+    private float moveSpeed = 5f;
+    private float attackRange = 0.5f;
+    private int attackDamage = 10;
+    private float attackCooldown = 2f;
 
     private bool isAttacking = false;
     private bool canAttack = true;
     private Transform player;
     private Animator animator;
-
-    // Array of attacks
-    //public BossAttack[] attacks;
-    //private int currentAttackIndex = 0;
 
     // Start is called before the first frame update
     void Start()
@@ -29,12 +25,12 @@ public class Boss : MonoBehaviour
     }
 
     // Update is called once per frame
-    void Update()
+    void FixedUpdate()
     {
-        if (!isAttacking)
+        if (!isAttacking && player != null)
         {
             //move towards player
-            transform.position = Vector2.MoveTowards(transform.position, player.position, moveSpeed * Time.deltaTime);
+            transform.position = Vector2.MoveTowards(transform.position, player.position, moveSpeed * Time.fixedDeltaTime);
 
             //check if within attack range
             if (Vector2.Distance(transform.position, player.position) < attackRange)
@@ -47,7 +43,7 @@ public class Boss : MonoBehaviour
 
     }
 
-    IEnumerator Attack()
+    private IEnumerator Attack()
     {
         isAttacking = true;
 
@@ -74,7 +70,7 @@ public class Boss : MonoBehaviour
                 break;
         }
 
-        if (canAttack)
+        if (canAttack && player != null)
         {
             //deal damage to player
             player.GetComponent<PlayerController>().TakeDamage(attackDamage);
@@ -87,6 +83,10 @@ public class Boss : MonoBehaviour
 
         //resume movement
         isAttacking = false;
+
+        animator.SetBool("isAttacking", false);
+        animator.SetBool("useSkill", false);
+        animator.SetBool("summon", false);
     }
 
     public void TakeDamage(float damage)
@@ -107,10 +107,10 @@ public class Boss : MonoBehaviour
         Destroy(gameObject);
     }
 
-    public class BossAttack
+    /*public class BossAttack
     {
         public int damage;
         public float range;
         public float cooldown;
-    }
+    }*/
 }
