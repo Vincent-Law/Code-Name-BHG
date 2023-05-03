@@ -64,11 +64,7 @@ public class BowController : MonoBehaviour
             FireArrow(drawProgress, rotation, angle, dir);
         }
 
-        float bowAngle = transform.eulerAngles.z;
-        if (bowAngle < 150f && bowAngle > 32f)
-        {
-            
-        }
+         animator.SetBool("fire", false);
 
     }
 
@@ -84,12 +80,12 @@ public class BowController : MonoBehaviour
         isDrawing = false;
         animator.SetBool("isDrawing", false);
         animator.SetBool("fire", true);
+       
     }
 
     private void FireArrow(float drawProgess, Quaternion rotation,float angle, Vector2 dir )
     {
-        
-        if (Input.GetButtonDown("Fire"))
+        if (arrowPrefab != null)
         {
             //Debug.Log(drawProgress);
             //GameObject arrow = Instantiate(arrowPrefab, rb.position + Vector2.up * 0.20f, Quaternion.identity);
@@ -107,7 +103,6 @@ public class BowController : MonoBehaviour
              arrow.transform.Rotate(0.0f, 0.0f, Mathf.Atan2(dir.y, dir.x) * Mathf.Rad2Deg);
            // logic to add for arrow stoping when near the end of its magnitude
         }
-
     }
 
 }
