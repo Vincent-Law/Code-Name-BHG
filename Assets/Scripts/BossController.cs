@@ -7,7 +7,8 @@ public class BossController : MonoBehaviour
     private float maxHealth = 100f;
     private float currentHealth;
     private float moveSpeed = 5f;
-    private float attackRange = 10f;
+    private float attackRange = 2f;
+    private float followRange = 10f;
     private int attackDamage = 10;
     private float attackCooldown = 2f;
 
@@ -28,11 +29,16 @@ public class BossController : MonoBehaviour
     // Update is called once per frame
     void FixedUpdate()
     {
-        if (!isAttacking && player != null)
+
+
+        if (Vector2.Distance(transform.position, player.position) < followRange && player != null)
         {
             //move towards player
             transform.position = Vector2.MoveTowards(transform.position, player.position, moveSpeed * Time.fixedDeltaTime);
+        }
 
+        if (!isAttacking && player != null)
+        {
             //check if within attack range
             if (Vector2.Distance(transform.position, player.position) < attackRange)
             {
