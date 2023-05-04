@@ -39,10 +39,9 @@ public class BowController : MonoBehaviour
 
         crossHair.transform.position = screenPoint; 
         aim = offset;
-        Vector2 shootingDirection = new Vector2(aim.x, aim.y);
+        //Vector2 shootingDirection = new Vector2(aim.x, aim.y);
 
-        bowPos = aim; 
-        bowPos.Normalize();
+        //bowPos = aim; 
 
         Vector2 dir = Camera.main.ScreenToWorldPoint(Input.mousePosition) - transform.position;
         float angle = Mathf.Atan2(dir.y, dir.x) * Mathf.Rad2Deg;
@@ -83,25 +82,41 @@ public class BowController : MonoBehaviour
        
     }
 
-    private void FireArrow(float drawProgess, Quaternion rotation,float angle, Vector2 dir )
+    private void FireArrow(float drawProgess, Quaternion rotation,float angle, Vector2 dir)
     {
         if (arrowPrefab != null)
         {
-            //Debug.Log(drawProgress);
-            //GameObject arrow = Instantiate(arrowPrefab, rb.position + Vector2.up * 0.20f, Quaternion.identity);
-            //Physics2D.IgnoreCollision(arrow.GetComponent<Collider2D>(), player.GetComponent<Collider2D>());
-            //arrow.GetComponent<Rigidbody2D>().velocity = offset * .05f;
-            //arrow.transform.Rotate(0.0f, 0.0f, Mathf.Atan2(aim.y, aim.x) * Mathf.Rad2Deg);
-
             //add rigibody2D component to arrow prefab
             GameObject arrow = Instantiate(arrowPrefab, rb.position + Vector2.up * 0.20f, Quaternion.identity);
             Physics2D.IgnoreCollision(arrowPrefab.GetComponent<Collider2D>(), player.GetComponent<Collider2D>());
-            
-            //set gravity scale to 0
-             arrow.GetComponent<Rigidbody2D>().velocity = dir * drawProgess *2f;
-           // provides shooting angle based on crosshair placement
-             arrow.transform.Rotate(0.0f, 0.0f, Mathf.Atan2(dir.y, dir.x) * Mathf.Rad2Deg);
-           // logic to add for arrow stoping when near the end of its magnitude
+            arrow.GetComponent<Rigidbody2D>().gravityScale = 0;
+
+            // Calculate velocity vector
+            float magnitude = drawProgress * 10f;
+            Vector2 velocity = new Vector2(magnitude * Mathf.Cos(angle * Mathf.Deg2Rad), magnitude * Mathf.Sin(angle * Mathf.Deg2Rad));
+
+            //provides shooting angle based on crosshair placement
+            arrow.transform.Rotate(0.0f, 0.0f, Mathf.Atan2(dir.y, dir.x) * Mathf.Rad2Deg);
+
+            //set velocity
+            arrow.GetComponent<Rigidbody2D>().velocity = velocity;
+
+            // Exponentially decay velocity over time
+            float decayFactor = 0.9f; // Decay factor (adjust as needed)
+            float decayTime = 2f; // Decay time in seconds (adjust as needed)
+            float elapsedTime = 0;
+            while (elapsedTime < decayTime && arrow != null)
+                {
+                    elapsedTime += Time.fixedDeltaTime;
+                    float decayAmount = Mathf.Pow(decayFactor, elapsedTime / decayTime);
+                    arrow.GetComponent<Rigidbody2D>().velocity = velocity * decayAmount;
+                }
+
+            // Destroy arrow when it becomes too slow
+            if (arrow != null && arrow.GetComponent<Rigidbody2D>().velocity.magnitude < 0.1f)
+                {
+                    Destroy(arrow);
+                }
         }
     }
 
