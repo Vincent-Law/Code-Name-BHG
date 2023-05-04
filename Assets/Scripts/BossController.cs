@@ -113,11 +113,4 @@ public class BossController : MonoBehaviour
         //destroy boss
         Destroy(gameObject);
     }
-
-    /*public class BossAttack
-    {
-        public int damage;
-        public float range;
-        public float cooldown;
-    }*/
 }
