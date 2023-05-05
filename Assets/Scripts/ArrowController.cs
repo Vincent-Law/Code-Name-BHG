@@ -4,16 +4,18 @@ public class ArrowController : MonoBehaviour
 {
     public GameObject arrowPrefab;
     public GameObject player;
+    private Rigidbody2D rb;
 
-   
-    
+    private void Start()
+    {
+        rb = GetComponent<Rigidbody2D>();
+    }
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        
-            // Do something when the arrow collides with something
-            // For example, you could play a sound, apply damage to an enemy, or create a particle effect.
-            Physics2D.IgnoreCollision(player.GetComponent<Collider2D>(), arrowPrefab.GetComponent<Collider2D>());
+            //stop the arrow and freeze it when it collides with something
+            rb.velocity = Vector2.zero;
+            rb.constraints = RigidbodyConstraints2D.FreezeAll;
         
     }
 }
